@@ -15,7 +15,6 @@ def main():
 
 
 
-
 if __name__ == "__main__":
     from scrapper import getLink
     from ssrDecoder import decoder

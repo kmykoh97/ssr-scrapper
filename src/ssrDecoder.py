@@ -65,5 +65,5 @@ def decoder(link):
                 config[k] = base64_decode(v)
             except Exception:  # in case that this is not a base64encoded string, use the original string instead.
                 config[k] = v
-    return config
 
+    return config
