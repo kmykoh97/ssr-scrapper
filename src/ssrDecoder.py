@@ -9,7 +9,7 @@ Created on Sat Aug 25 17:07:35 2018
 
 
 import base64
-
+import sys
 
 
 def to_bytes(s):
@@ -30,6 +30,11 @@ def to_str(s):
 
 
 
+def ssrIsValid(link):
+    return link[:6] == 'ssr://'
+
+
+
 def base64_decode(string):
     def adjust_padding(string):
         """Adjust to base64 format, i.e. len(string) % 4 == 0."""
@@ -45,6 +50,9 @@ def base64_decode(string):
 
 
 def decoder(link):
+    if not ssrIsValid(link):
+        raise Exception(link + 'is not a valid ssr link')
+    
     # link[6:] to strip the first 6 characters, i.e. 'ssr://'
     config_str = base64_decode(link[6:]).split('/?')
 
